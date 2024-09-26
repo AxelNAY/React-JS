@@ -13,14 +13,6 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
-  let next = 1
-
-  if (anecdotes[selected + 1] === null) {
-    next = 0
-  }
-  else {
-    next = 1
-  }
 
   return (
     <div>
