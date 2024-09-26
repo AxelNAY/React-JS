@@ -21,8 +21,13 @@ const App = () => {
     setPoints(copy)
   }
 
+  const MostVote = Object.keys(points).reduce((highest, key) => {
+    return points[key] > (points[highest] || 0) ? key : highest;
+  }, selected);
+
   return (
     <div>
+      <h1>Anectode of the day</h1>
       {anecdotes[selected]}
       <br />
       has {points[selected]} votes
@@ -33,6 +38,12 @@ const App = () => {
       <button onClick={() => setSelected(Math.floor(Math.random() * (7 - 0)))}>
         next anecdotes
       </button>
+      <h1>Anecdote with the most votes</h1>
+      {points[MostVote] > 0 ? (
+        <p>{anecdotes[MostVote]}<br />has {points[MostVote]} votes</p>
+      ) : (
+        <p>No votes yet</p>
+      )}
     </div>
   )
 }
